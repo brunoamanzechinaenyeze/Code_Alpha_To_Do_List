@@ -13,7 +13,7 @@ const Todo = ({ task, toggleComplete, deleteTodo, editTodo }) => {
         {task.task}
       </p>
       <div>
-        <FontAwesomeIcon icon={faPenToSquare} onClick={() => editTodo(task.id)}/>
+        <FontAwesomeIcon icon={faPenToSquare} onClick={() => editTodo(task.id, task.task)}/>
         <FontAwesomeIcon icon={faTrash} onClick={() => deleteTodo(task.id)} />
       </div>
     </div>

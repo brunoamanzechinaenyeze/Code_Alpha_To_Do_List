@@ -29,21 +29,23 @@ const TodoWrapper = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const editTodo = (id) => {
+  const editTodo = (id, value) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+        todo.id === id
+          ? { ...todo, isEditing: !todo.isEditing, task: value }
+          : todo
       )
     );
   };
-  
+
   return (
     <div className="TodoWrapper">
       <h1>Plan Your Day Right👍</h1>
       <TodoForm addTodo={addTodo} />
       {todos.map((todo, index) =>
         todo.isEditing ? (
-          <EditTodoForm editTodo={editTodo} task={todo}/>
+          <EditTodoForm editTodo={editTodo} task={todo} key={index} />
         ) : (
           <Todo
             task={todo}

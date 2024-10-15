@@ -3,12 +3,13 @@ import { useState } from "react";
 
 const EditTodoForm = ({ editTodo, task }) => {
   const [value, setValue] = useState(task.task);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    editTodo(task.id);
 
-    setValue('')
+    editTodo(task.id, value);
   };
+  console.log(task, value);
   return (
     <form className="TodoForm" onSubmit={handleSubmit}>
       <input
