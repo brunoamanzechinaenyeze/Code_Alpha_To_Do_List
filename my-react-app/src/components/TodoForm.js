@@ -6,11 +6,14 @@ const TodoForm = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTodo(value);
+
+    setValue('')
   };
   return (
     <form className="TodoForm" onSubmit={handleSubmit}>
       <input
         type="text"
+        value={value}
         className="todo-input"
         placeholder="What is the task today"
         onChange={(e) => setValue(e.target.value)}
