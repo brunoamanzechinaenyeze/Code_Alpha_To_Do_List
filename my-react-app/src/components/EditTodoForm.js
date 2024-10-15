@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
-const EditTodoForm = ({ addTodo }) => {
-  const [value, setValue] = useState("");
+const EditTodoForm = ({ editTodoTodo, task }) => {
+  const [value, setValue] = useState(task.task);
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(value);
+    editTodo(value, task.id);
 
     setValue('')
   };
@@ -25,4 +25,4 @@ const EditTodoForm = ({ addTodo }) => {
   );
 };
 
-export default TodoForm;
+export default EditTodoForm;
