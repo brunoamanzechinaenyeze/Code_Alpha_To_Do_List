@@ -13,23 +13,39 @@ const TodoWrapper = () => {
       ...todos,
       { id: uuidv4(), task: todo, completed: false, isEditing: false },
     ]);
-    console.log(todos)
+    console.log(todos);
   };
 
   const toggleComplete = (id) => {
-    setTodos(todos.map((todo) => todo.id === id ? {...todo, completed: !todo.completed} : todo))
-  }
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id))
-  }
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const editTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+      )
+    );
+  };
   return (
     <div className="TodoWrapper">
       <h1>Plan Your Day Right👍</h1>
       <TodoForm addTodo={addTodo} />
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} toggleComplete={toggleComplete}
-        deleteTodo={deleteTodo}/>
+        <Todo
+          task={todo}
+          key={index}
+          toggleComplete={toggleComplete}
+          deleteTodo={deleteTodo}
+        />
       ))}
     </div>
   );
